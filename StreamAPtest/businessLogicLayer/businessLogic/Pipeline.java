@@ -28,7 +28,7 @@ public abstract class Pipeline<T>
 
    
     /**
-     * Executing all the attached processors in a pipeline manner
+     * Executing all the registered processors in the pipeline
      * @param inputStream
      * @return
      */
