@@ -2,7 +2,7 @@ package businessLogic;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+
 
 /**
  * Main class for our pipeline
@@ -32,10 +32,17 @@ public abstract class Pipeline<T>
      * @param inputStream
      * @return
      */
-    public void RunPipeline(T inputStream)  
+    public T RunPipeline(T inputStream)  
     {  
-   	   	
-    	processors.forEach(f -> f.Execute(inputStream));
+    	T output = inputStream;
+    	
+    	for (IProcessor<T> processor: processors) {
+    		
+    		output=processor.Execute(output);
+		}
+    	
+    	return output;
+    	
         
     }  
 }  

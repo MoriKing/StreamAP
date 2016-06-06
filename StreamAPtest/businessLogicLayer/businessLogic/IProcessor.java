@@ -2,6 +2,6 @@ package businessLogic;
 
 public interface IProcessor<T> {
 	
-	void Execute(T input);  
+	T Execute(T input);  
 	
 }
