@@ -1,11 +1,21 @@
 package mainInterface;
 
+import java.io.IOException;
+
+import dataAccess.Access;
 
 public class presentation {
 	
 	 public static void main(String[] args) {
-	        System.out.println("Hello World!"); // Display the string.
+	        
+		try {
+			Access.EventDao.startLoading();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	    }
-	 //change here and there
+	 
 
 }

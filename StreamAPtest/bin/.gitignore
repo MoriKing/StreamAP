@@ -1,6 +1,3 @@
-/mainInterface/
-/Access.class
-/Logic.class
 /dataAccess/
-/businessLogic/
+/mainInterface/
 /common/

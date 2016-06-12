@@ -1,7 +1,15 @@
 package dataAccess.bigfile;
 
-import dataAccess.entities.IEventDao;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 
+import dataAccess.entities.IEventDao;
+import dataAccess.jsonconverter.JsonConverter;
+
+import common.configuration.Config;
+import common.entities.*;
 
 /**
  * The actual implementation of loading events
@@ -11,23 +19,31 @@ import dataAccess.entities.IEventDao;
 public class BigfileEventDao implements IEventDao {
 
 	@Override
-	public void startLoading() {
-		// TODO Auto-generated method stub
+	public void startLoading() throws IOException {
 		
+		JsonConverter deserializer =new JsonConverter();
 		
-	/*	FileInputStream inputStream = null;
+		FileInputStream inputStream = null;
 		Scanner sc = null;
 		try {
-		    inputStream = new FileInputStream(path);
+		    inputStream = new FileInputStream(Config.path);
 		    sc = new Scanner(inputStream, "UTF-8");
 		    while (sc.hasNextLine()) {
-		        String line = sc.nextLine();
-		        // System.out.println(line);
+		        String record = sc.nextLine();
+		        
+		        Event eventRecord = deserializer.fromJson(record);
+		        
+		        System.out.println(eventRecord.event_id);
+		        
+		        break;
 		    }
-		    // note that Scanner suppresses exceptions
+		    //Scanner suppresses exceptions
 		    if (sc.ioException() != null) {
 		        throw sc.ioException();
 		    }
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 		    if (inputStream != null) {
 		        inputStream.close();
@@ -35,7 +51,7 @@ public class BigfileEventDao implements IEventDao {
 		    if (sc != null) {
 		        sc.close();
 		    }
-		}*/
+		}
 		
 	}
 	
