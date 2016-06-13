@@ -5,7 +5,7 @@ import java.util.List;
 import businessLogic.IProcessor;
 import common.entities.*;
 
-public class FilterProduct implements IProcessor<List<Event>>{
+public class TimePeriod implements IProcessor<List<Event>>{
 
 	@Override
 	public List<Event> Execute(List<Event> input) {
