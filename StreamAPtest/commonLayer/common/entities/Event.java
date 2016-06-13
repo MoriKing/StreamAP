@@ -2,9 +2,10 @@ package common.entities;
 
 
 import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public final class Event {
     public final String type;
     public final User_interaction user_interaction;
@@ -39,6 +40,7 @@ public final class Event {
         this.system = system;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class User_interaction {
         public final String type;
         public final String view_id;
@@ -50,6 +52,7 @@ public final class Event {
         }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class Time {
         public final String create_timestamp;
         public final String send_timestamp;
@@ -61,6 +64,7 @@ public final class Event {
         }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class Device {
         public final Operating_system operating_system;
         public final String manufacturer;
@@ -83,6 +87,7 @@ public final class Event {
             this.rooted = rooted;
         }
 
+        @JsonIgnoreProperties(ignoreUnknown = true)
         public static final class Operating_system {
             public final String kind;
             public final String version;
@@ -96,6 +101,7 @@ public final class Event {
             }
         }
 
+        @JsonIgnoreProperties(ignoreUnknown = true)
         public static final class Display_resolution {
             public final String width;
             public final String height;
@@ -108,6 +114,7 @@ public final class Event {
         }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class Application {
         public final String name;
         public final String version;
@@ -123,6 +130,7 @@ public final class Event {
         }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class Consent {
         public final boolean product_improvement;
         public final boolean tips;
@@ -136,6 +144,7 @@ public final class Event {
         }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class Network {
         public final String carrier;
         public final String connection;
@@ -147,6 +156,7 @@ public final class Event {
         }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class Sender_info {
         public final String agent;
         public final String received_timestamp;
@@ -163,42 +173,25 @@ public final class Event {
             this.geo = geo;
         }
 
+        @JsonIgnoreProperties(ignoreUnknown = true)
         public static final class Device {
             public final String os;
-            public final Phone phone;
-            public final Tablet tablet;
-            public final User_agent user_agent;
+            public final String phone;
+            public final String tablet;
+            public final String user_agent;
     
             @JsonCreator
-            public Device(@JsonProperty("os") String os, @JsonProperty("phone") Phone phone, @JsonProperty("tablet") Tablet tablet, @JsonProperty("user_agent") User_agent user_agent){
+            public Device(@JsonProperty("os") String os, @JsonProperty("phone") String phone, @JsonProperty("tablet") String tablet, @JsonProperty("user_agent") String user_agent){
                 this.os = os;
                 this.phone = phone;
                 this.tablet = tablet;
                 this.user_agent = user_agent;
             }
     
-            public static final class Phone {
         
-                @JsonCreator
-                public Phone(){
-                }
-            }
-    
-            public static final class Tablet {
-        
-                @JsonCreator
-                public Tablet(){
-                }
-            }
-    
-            public static final class User_agent {
-        
-                @JsonCreator
-                public User_agent(){
-                }
-            }
         }
 
+        @JsonIgnoreProperties(ignoreUnknown = true)
         public static final class Geo {
             public final String[] range;
             public final String country;
@@ -219,6 +212,7 @@ public final class Event {
         }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class System {
         public final String deployment_name;
 
