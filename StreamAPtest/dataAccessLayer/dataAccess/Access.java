@@ -1,23 +1,19 @@
 package dataAccess;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.SynchronousQueue;
 
 import dataAccess.entities.IEventDao;
 import common.entities.*;
 
 public class Access {
 
-	
-	public static Map<String,Event> localCacheTable = Collections.synchronizedMap(new HashMap<String, Event>());
-	//a synchronized queue here also: TODO
-	
+	public static SynchronousQueue<Event> enrtyQueue=new SynchronousQueue<Event>();
+		
 	private Access() {
 				
 	}
 	
-	//get the underlying file store from config : TODO
+	//TODO: get the underlying file store method from config
 	
 	private static final IDaoFactory factory = DaoFactories.GetFactory("BigFile");
 	

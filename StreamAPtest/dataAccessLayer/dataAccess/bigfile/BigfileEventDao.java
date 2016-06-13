@@ -3,6 +3,7 @@ package dataAccess.bigfile;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.security.KeyStore.Entry;
 import java.util.Scanner;
 
 import dataAccess.Access;
@@ -22,8 +23,8 @@ public class BigfileEventDao implements IEventDao {
 	@Override
 	public void startLoading() throws IOException {
 		
-		int recordTotal=1;
-		int failedRecords=1;
+		int recordTotal=0;
+		int failedRecords=0;
 		JsonConverter deserializer =new JsonConverter();
 		
 		FileInputStream inputStream = null;
@@ -33,26 +34,20 @@ public class BigfileEventDao implements IEventDao {
 		    sc = new Scanner(inputStream, "UTF-8");
 		    while (sc.hasNextLine()) {
 		        String record = sc.nextLine();
-		        
-		        
+		        		        
 		        try {
 		        	Event eventRecord = deserializer.fromJson(record);
-		        	Access.localCacheTable.put(eventRecord.event_id,eventRecord);
+		        	Access.enrtyQueue.put(eventRecord);
 		        	
 				} catch (Exception e) {
-					System.out.println(record);
-			        System.out.println(recordTotal);
-			        throw e;
-			        
+					failedRecords++;
+			        //TODO: Discarding the failed records to a separate discarded file      
 				}
-		        
-		        
-		        
-		        
+		                
 		      
 		      recordTotal++;
 		      
-		      System.out.println(failedRecords + " records failed out of :" + recordTotal);
+		      System.out.println(failedRecords + " records decoding from JSON failed out of :" + recordTotal);
 		    }
 		    //Scanner suppresses exceptions
 		    if (sc.ioException() != null) {
