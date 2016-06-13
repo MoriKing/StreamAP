@@ -37,11 +37,13 @@ public class BigfileEventDao implements IEventDao {
 		        		        
 		        try {
 		        	Event eventRecord = deserializer.fromJson(record);
-		        	Access.enrtyQueue.put(eventRecord);
+		        	//Access.enrtyQueue.put(eventRecord);
+		        	System.out.println(record);
 		        	
 				} catch (Exception e) {
 					failedRecords++;
-			        //TODO: Discarding the failed records to a separate discarded file      
+			        //TODO: Discarding the failed records to a separate discarded file  
+					System.out.println("error");
 				}
 		                
 		      

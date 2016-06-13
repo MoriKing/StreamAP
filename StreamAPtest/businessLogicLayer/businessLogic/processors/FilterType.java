@@ -4,26 +4,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import businessLogic.IProcessor;
-import common.entities.*;
+import common.entities.Event;
 
+public class FilterType implements IProcessor<List<Event>>{
 
-public class FilterProduct implements IProcessor<List<Event>>{
-
-	private String source;
+	private String type;
 	
 	
 	/**
 	 * insert the product you want to filter as source
 	 * @param source
 	 */
-	public FilterProduct(String source) {
-		this.source=source;
+	public FilterType(String type) {
+		this.type=type;
 	}
 	
 	@Override
 	public List<Event> Execute(List<Event> input) {
 
-		return input.stream().filter(event -> event.source==this.source)
+		return input.stream().filter(event -> event.type==this.type)
 				.collect(Collectors.toList());
 
 	}

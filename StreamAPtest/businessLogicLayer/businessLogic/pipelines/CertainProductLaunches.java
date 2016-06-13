@@ -14,12 +14,12 @@ import common.entities.*;
  * @author morteza neishaboori
  *
  */
-public class certainProductInTimePeriod extends Pipeline<List<Event>> {
+public class CertainProductLaunches extends Pipeline<List<Event>> {
 	
-	public certainProductInTimePeriod() {
+	public CertainProductLaunches(String product, String type) {
 
 		
-		this.Register(new FilterProduct()).Register(new TimePeriod());
+		this.Register(new FilterProduct(product)).Register(new FilterType(type));
 	}
 
 }

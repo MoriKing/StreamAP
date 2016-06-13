@@ -10,7 +10,9 @@ public class TimePeriod implements IProcessor<List<Event>>{
 	@Override
 	public List<Event> Execute(List<Event> input) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		
+		return input;
 	}
 
 	
