@@ -31,14 +31,13 @@ public class Logic {
 				int i=0;
 				while(i<100)
 				{
-					System.out.println("pre-collect");
 					Event temp;
 					inputStream.add(temp=Access.enrtyQueue.take());
 					System.out.println("collect: "+temp.source);
 					i++;
 					
 				}
-				System.out.println("hreeee");
+				
 				CertainProductLaunches myPipeline =
 						new CertainProductLaunches("product-a");
 				
@@ -46,9 +45,9 @@ public class Logic {
 				
 				for (Event event : result) {
 					System.out.println("event_id:"+event.event_id+
-							"application:"+ event.application+
-							"type:"+ event.type+
-							"source:"+event.source);
+							" , application:"+ event.application+
+							" , type:"+ event.type+
+							" , source:"+event.source);
 				}
 				
 			} catch (Exception e) {

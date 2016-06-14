@@ -12,7 +12,6 @@ public class presentation {
 		Logic.collect();
 		Access.EventDao.StartLoaderThread();
 		
-		System.out.println("end");
 	    }
 	 
 

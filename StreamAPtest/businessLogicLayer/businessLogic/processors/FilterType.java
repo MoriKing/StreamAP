@@ -22,8 +22,10 @@ public class FilterType implements IProcessor<List<Event>>{
 	@Override
 	public List<Event> Execute(List<Event> input) {
 
-		return input.stream().filter(event -> event.type==this.type)
-				.collect(Collectors.toList());
+	
+		 return input.stream().
+					filter(event -> event.type.equals(this.type))
+									.collect(Collectors.toList());
 
 	}
 
