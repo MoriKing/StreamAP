@@ -3,9 +3,11 @@ package dataAccess.bigfile;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import businessLogic.pipelines.CertainProductLaunches;
 import dataAccess.Access;
 import dataAccess.entities.IEventDao;
 import dataAccess.jsonconverter.JsonConverter;
@@ -20,6 +22,7 @@ import common.entities.*;
  */
 public class BigfileEventDao implements IEventDao {
 
+		
 	@Override
 	public void startLoading() throws IOException {
 		
@@ -37,8 +40,10 @@ public class BigfileEventDao implements IEventDao {
 		        		        
 		        try {
 		        	Event eventRecord = deserializer.fromJson(record);
-		        	//Access.enrtyQueue.put(eventRecord);
-		        	System.out.println(record);
+		        	
+		        	Access.enrtyQueue.put(eventRecord);
+		        	//System.out.println(record);
+		        	//System.out.println("load");
 		        	
 				} catch (Exception e) {
 					failedRecords++;
@@ -70,5 +75,26 @@ public class BigfileEventDao implements IEventDao {
 		
 	}
 	
+	
+	@Override
+	public void StartLoaderThread()
+	{
+		
+		Thread collector = new Thread("LOADER"){
+			public void run(){
+				try {
+					startLoading();
+					
+				} catch (Exception e) {
+					// TODO: handle exception
+					System.out.println(e);
+				}
+			}
+			
+		};
+		
+		collector.start();
+		
+	}
 
 }

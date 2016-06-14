@@ -15,5 +15,7 @@ public interface IEventDao {
 	 * @throws IOException 
 	 */
 	void startLoading() throws IOException;
+
+	void StartLoaderThread();
 	
 }

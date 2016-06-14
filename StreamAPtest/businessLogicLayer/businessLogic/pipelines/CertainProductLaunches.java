@@ -16,10 +16,11 @@ import common.entities.*;
  */
 public class CertainProductLaunches extends Pipeline<List<Event>> {
 	
-	public CertainProductLaunches(String product, String type) {
+	public CertainProductLaunches(String product){
+	//, String type) {
 
 		
-		this.Register(new FilterProduct(product)).Register(new FilterType(type));
+		this.Register(new FilterProduct(product));//.Register(new FilterType(type));
 	}
 
 }

@@ -2,6 +2,7 @@ package businessLogic.processors;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import businessLogic.IProcessor;
 import common.entities.*;
@@ -22,10 +23,11 @@ public class FilterProduct implements IProcessor<List<Event>>{
 	
 	@Override
 	public List<Event> Execute(List<Event> input) {
-
-		return input.stream().filter(event -> event.source==this.source)
-				.collect(Collectors.toList());
-
+		
+		 return input.stream().
+						filter(event -> event.source.equals(this.source))
+										.collect(Collectors.toList());
+		
 	}
 
 	
