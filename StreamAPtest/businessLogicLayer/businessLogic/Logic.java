@@ -33,13 +33,13 @@ public class Logic {
 				{
 					Event temp;
 					inputStream.add(temp=Access.enrtyQueue.take());
-					System.out.println("collect: "+temp.source);
+					
 					i++;
 					
 				}
 				
 				CertainProductLaunches myPipeline =
-						new CertainProductLaunches("product-a");
+						new CertainProductLaunches("product-a","launch");
 				
 				List<Event> result = myPipeline.RunPipeline(inputStream);
 				
