@@ -9,7 +9,7 @@ import dataAccess.Access;
 
 /**
  * This class collects the entities from the data access layer queue
- * and distributes them properly for the created pipline and registered processors
+ * and distributes them properly for the created pipeline and registered processors
  * 
  * @author Morteza Neishaboori
  *
@@ -26,8 +26,8 @@ public class Logic {
 				
 
 				List<Event> inputStream = new ArrayList<Event>();
-				//TODO: observer pattern to fill in the pipleine inputs
-				//every pipline should be subscribed to the entry data collector
+				//TODO: observer pattern to fill in the pipeline inputs
+				//every pipeline should be subscribed to the entry data collector
 				int i=0;
 				while(i<100)
 				{

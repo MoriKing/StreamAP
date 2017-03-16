@@ -1,2 +1,5 @@
-/mainInterface/
 /businessLogic/
+/common/
+/dataAccess/
+/jackson-all-1.9.0.jar
+/mainInterface/

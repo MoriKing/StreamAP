@@ -4,7 +4,7 @@ import java.io.IOException;
 
 /**
  * Defines methods to access Events and is not dependent on the underlying data store technology
- * The concerete implementation of this Dao are implementation dependent 
+ * The concrete implementation of this Dao are implementation dependent 
  * @author morteza neishaboori
  *
  */
